@@ -16,9 +16,9 @@ It is designed for **embedded systems**
 	DEBUG_ERROR("ERROR Message");
 ```
 
-- **Print ALERT Message :**
+- **Print EXCEPTION Message :**
 ```C
-	DEBUG_ALERT("ALERT Message From %s", "Fire Station");
+	DEBUG_EXCEPTION("EXCEPTION Message");
 ```
 
 - **Print WARNING Message :**

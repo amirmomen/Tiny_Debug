@@ -8,15 +8,16 @@
 #ifndef TINY_DEBUG_TINY_DEBUG_H_
 #define TINY_DEBUG_TINY_DEBUG_H_
 
-//#define ENABLE_GLOBAL_DEBUG
+#define ENABLE_GLOBAL_DEBUG
 
 #include <stdio.h>
+//#include <string.h>
 
-#define NEWLINE       "\r\n"
+#define NEWLINE			"\r\n"
 
 #if defined(ENABLE_GLOBAL_DEBUG) || defined(DEBUG_THIS_FILE)
 
-	#define FILENAME_PATH_OMMITED 		(strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
+//	#define FILENAME_PATH_OMMITED 		(strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
 
 	#define PLACE(x)                    do{x} while(0)
 	#define PRINT(...)                  printf(__VA_ARGS__)
@@ -30,9 +31,8 @@
 
 
 	#define DEBUG_OK(...)       DEBUG_PRINT_MSG(OK, __VA_ARGS__)
-	#define DEBUG_ALERT(...)  	DEBUG_PRINT_MSG(ALERT, __VA_ARGS__)
 	#define DEBUG_WARNING(...)  DEBUG_PRINT_MSG(WARN, __VA_ARGS__)
-	#define DEBUG_TRACE()       DEBUG_FUNC(" + [TRACE] \t: File : %s :: Function : %s() :: Line : %d" NEWLINE, FILENAME_PATH_OMMITED, __func__, __LINE__)
+	#define DEBUG_TRACE()       DEBUG_FUNC(" + [TRACE] \t: File : %s :: Function : %s() :: Line : %d" NEWLINE, __FILE__, __func__, __LINE__)
 	#define DEBUG_ERROR(...)    	PLACE(\
 										DEBUG_PRINT_HEADER(ERROR);     \
 										DEBUG_LN(__VA_ARGS__);   \
@@ -54,7 +54,6 @@
 	#define DEBUG_PRINT_MSG(HEADER, MSG, ...)
 	#define DEBUG_OK(...)
 	#define DEBUG_ERROR(...)
-	#define DEBUG_ALERT(...)
 	#define DEBUG_WARNING(...)
 	#define DEBUG_TRACE()
 	#define DEBUG_EXCEPTION(...)
